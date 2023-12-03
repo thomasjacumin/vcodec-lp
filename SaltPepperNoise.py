@@ -16,11 +16,11 @@ class SaltPepperNoise(object):
         ret = np.zeros(w*h)
         for i in range(1,w*h):
             a = np.random.rand(1)[0]
-            if a <= salt:
+            if a < salt:
                 ret[i] = 1
             else:
                 a = np.random.rand(1)[0]
-                if a <= pepper:
+                if a < pepper:
                     ret[i] = 0
                 else:
                     ret[i] = f[i]
