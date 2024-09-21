@@ -34,7 +34,10 @@ class LpAdjointMask(object):
 
     IM = L2ParabolicInpainting(w,h)
     IM.setAlpha(self.alpha)
-    IM.setPrevious( -np.power(abs(v0), p-2)*v0)
+    if p > 1:
+      IM.setPrevious( -np.power(abs(v0), p-2)*v0)
+    elif p == 1:
+      IM.setPrevious( -np.sign(v0))
     IM.assemble(0*np.ones(w*h), np.zeros(w*h))
     w0 = IM.process()
 
